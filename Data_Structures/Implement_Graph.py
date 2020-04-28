@@ -1,26 +1,29 @@
-import random as randIG
+import random as randGraph
 
 
 class Neuron:
     def __init__(self):
         self.incomingEdges = []
         self.outgoingEdges = []
+        inputVal = 0
+        outputVal = 0
 
 
 class Axon:
-    def __init__(self, startNode=None, endNode=None, weight=0):
+    def __init__(self, startNode=None, endNode=None):
         self.startNode = startNode
         self.endNode = endNode
-        self.weight = weight
+        self.weight = randGraph.uniform(0, 1)
 
 
 class Brain:
     def __init__(self):
         self.allNeurons = []
         self.allAxons = []
+        self.startNeuron = None
 
     def initializeBrain(self):
-        inputSpawnNeuron = Neuron()
+        self.startNeuron = inputSpawnNeuron = Neuron()
         middleSpawnNeuron = Neuron()
         outputSpawnNeuron = Neuron()
         self.formConnection(inputSpawnNeuron, middleSpawnNeuron)
