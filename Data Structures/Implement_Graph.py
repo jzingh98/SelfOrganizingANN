@@ -8,14 +8,10 @@ class Neuron:
 
 
 class Axon:
-    def __init__(self):
-        self.startNode = None
-        self.endNode = None
-        self.weight = 0
-
-    def createEdge(self, startNode, endNode):
+    def __init__(self, startNode=None, endNode=None, weight=0):
         self.startNode = startNode
         self.endNode = endNode
+        self.weight = weight
 
 
 class Brain:
@@ -27,6 +23,16 @@ class Brain:
         inputSpawnNeuron = Neuron()
         middleSpawnNeuron = Neuron()
         outputSpawnNeuron = Neuron()
+        self.formConnection(inputSpawnNeuron, middleSpawnNeuron)
+        self.formConnection(middleSpawnNeuron, outputSpawnNeuron)
+        self.allNeurons.extend([inputSpawnNeuron, middleSpawnNeuron, outputSpawnNeuron])
+
+    def formConnection(self, node1, node2):
+        newAxon = Axon(node1, node2)
+        node1.outgoingEdges.append(newAxon)
+        node2.incomingEdges.append(newAxon)
+        self.allAxons.append(newAxon)
+
 
 
 
