@@ -5,6 +5,7 @@ from math import exp
 def sigmoid(x):
     return 1 / (1 + exp(-x))
 
+
 def derivative_sigmoid(x):
     f = 1 / (1 + exp(-x))
     df = f * (1 - f)
